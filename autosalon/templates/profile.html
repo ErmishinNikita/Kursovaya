@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+<div class="wrapper">
+    <div class="quit">
+    <a href="/quit">Выход из аккаунта</a>
+</div>
+<h1>Личный кабинет</h1>
+<div class="profil">
+  <img src="https://blackpantherpowerfitness.com/wp-content/uploads/2020/08/blank-profile-picture-mystery-man-avatar-973460.jpg" width="150px" height="150px">
+</div>
+
+<h1>Оставьте заявку на приобретение автомобиля:</h1>
+ <div class="ostusl">
+<form  method="post"  class="form-contact">
+    <p> <label> Как к вам обращаться: </label> <input type="text" name="fio" value="" required> </p>
+    <p> <label> Как с вами связаться : </label> <input type="text" name="contact" value="" required> </p>
+    <p> <label> Какой автомоибль хотите приобрести(модель и цвет автомобиля)?</label></p>
+    <p> <textarea name="auto" rows="3" cols="30"></textarea></p>
+    <p> <input class="kn" type="submit" value="Отправить"></p>
+</form>{% for  cat, msg in get_flashed_messages(True) %}
+
+</div>
+
+</div>
+<div class="centr">
+<div class="flash {{cat}}"> {{msg}} </div>
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+{{super()}}
+<div class="wrapper-model">
+
+    <div class="polo-pokupka">
+    <div class="Polo-img">
+        <h1>Volkswagen Teramont</h1>
+        <img src="https://autosalon-vw.ru/resources/bodies/550fef8344ea788c37385fd9c3f57428ee7879ed.png" width="500" height="350">
+    </div>
+    <div class="colors">
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="silver"></div>
+        <div class="red"></div>
+        <div class="blue"></div>
+    </div>
+    </div>
+    <div class="pokupka">
+        <h2>Стоимость покупки:</h2>
+        <h1>2 750 000 ₽</h1>
+        <div class="knopka-pokupki">
+        <a type="submit" href="kabinet">Заявка на покупку</a>
+    </div>
+    </div>
+
+</div>
+<div class="polo">
+    <div class="power">
+        <img src="https://vw-auto-msk.ru/assets/img/body-tech_icons/tech-icon_01.png">
+        <div class="item-car">
+            <p class="loshad">190 км/ч</p>
+            <p class="mosh">Максимальная скорость</p>
+        </div>
+    </div>
+    <div class="power">
+        <img src="https://vw-auto-msk.ru/assets/img/body-tech_icons/tech-icon_03.png">
+        <div class="item-car"><p class="loshad">180 л.с</p>
+        <p class="mosh">Мощность двигателя</p>
+        </div>
+    </div>
+    <div class="power">
+        <img src="https://vw-auto-msk.ru/assets/img/body-tech_icons/tech-icon_02.png">
+        <div class="item-car">
+            <p class="loshad">9.3 с</p>
+            <p class="mosh">Разгон до 100 км/ч</p>
+        </div>
+    </div>
+    <div class="power">
+        <img src="https://vw-auto-msk.ru/assets/img/body-tech_icons/tech-icon_04.png">
+        <div class="item-car">
+            <p class="loshad">11.5 л/100 км</p>
+            <p class="mosh">Средний расход топлива</p>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

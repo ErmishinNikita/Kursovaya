@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+    {% block title -%}
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Flask</title>
+    {% endif %}
+    {% endblock %}
+</head>
+<body>
+<div class="nav">
+    {% block content -%}
+            {%-  block mainmenu -%}
+                <ul class="mainmenu">
+                    {% for m in menu -%}
+                    <li>  <a href="{{m['url']}}"> {{m['name']}} </a> </li>
+                    {% endfor -%}
+                </ul>
+            {% endblock mainmenu -%}
+</div>
+{%endblock%}
+
+<div class="footer-block">
+    <p>Контактный номер телефона: 8-953-291-81-28
+    <br>Почтовый ящик:saaligin31@yandex.ru</br>
+    </p>
+
+    {% block footer %}
+        <ul class="footer">
+            {% for m in footer -%}
+                <li><a href="{{ m['url'] }}"><i class="{{ m['class'] }}"></i></a></li>
+            {% endfor %}
+        </ul>
+    {% endblock footer -%}
+</div>
+</body>
+</html>
