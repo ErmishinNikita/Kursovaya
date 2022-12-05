@@ -230,6 +230,7 @@ background: #FF9C9C;
     display: flex;
     justify-content: space-around;
     margin-right: 10px;
+    margin-bottom: 250px;
 }
 .speed{
 
@@ -305,7 +306,7 @@ background: #FF9C9C;
 }
 .profil{
     width: 1070px;
-    text-align: center;
+    text-align: left;
 }
 .quit{
     display: block;
@@ -389,7 +390,8 @@ background: #FF9C9C;
 
 .ostusl{
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    margin-top: 15px;
 }
 .otziv{
     display: flex;
@@ -412,9 +414,6 @@ background: #FF9C9C;
     margin-left: 300px;
     margin-right: 300px;
     font-size: 30px;
-}
-.ostusl{
-    margin-top: 50px;
 }
 
 .del{
@@ -449,21 +448,4 @@ background: #FF9C9C;
     width: 325px;
     height: 200px;
 }
-.registr{
-    height: 750px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 
-.registr input{
-    font-size: 25px;
-}
-.registr p{
-    font-size: 25px;
-}
-.regi{
-    width: 325px;
-    height: 200px;
-}
