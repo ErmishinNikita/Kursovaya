@@ -89,15 +89,15 @@ border: 5px solid #FF4343;
 background: #FF9C9C;
 }
 
-/*.header-img{*/
-/*    display: block;*/
-/*    background-image: url(https://static.lada.ru/images/v6/service/benefit/servise-benefit_desktop.jpg);*/
-/*    width: 1206px;*/
-/*    height: 360px;*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: contain;*/
-/*    margin: 0 auto;*/
-/*}*/
+.header-img{
+    display: block;
+    background-image: url(https://autosalon-vw.ru/resources/collections/11927c3031d5044dd4a67d4609bd0c6294bb463a.jpg);
+    width: 1206px;
+    height: 360px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+}
 .model-ryd{
     text-align: center;
 }

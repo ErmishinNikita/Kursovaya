@@ -15,12 +15,15 @@ app.register_blueprint(admin, url_prefix='/admin')
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', title='Главная', menu=menu)
+    db = get_db()
+    db = FDataBase(db)
+    model = db.get_model2top3()
+    return render_template('index.html', title='Главная', menu=menu, model=model)
 
 
-@app.route('/model')
-def model():
-    return render_template('model.html', title='Модельный ряд', menu=menu)
+# @app.route('/model')
+# def model():
+#     return render_template('model.html', title='Модельный ряд', menu=menu)
 
 
 @app.route('/contact')
@@ -66,6 +69,7 @@ def reg():
     db = FDataBase(db)
     if request.method == "POST":
         db.add_users(request.form['login'], request.form['password'])
+        return redirect(url_for('login'))
     return render_template('registr.html', title='Регистрация', menu=menu)
 
 
@@ -81,7 +85,8 @@ def login():
                 session['userlogged'] = request.form['login']
                 username = session['userlogged']
                 print(username)
-                return redirect(url_for('profile', username=username))
+                return redirect(url_for('profile', username=request.form['login']))
+                # return redirect(url_for('profile', username=username))
         else:
             print('Ошибка')
     return render_template('login.html', title='Авторизация', menu=menu, data=db.getUser())
@@ -125,3 +130,24 @@ def page_not_found(error):
 @app.errorhandler(401)
 def page_error_401(error):
     return render_template('401.html', title='Ошибка авторизации', menu=menu)
+
+@app.route('/a')
+def a():
+    db = get_db()
+    db = FDataBase(db)
+    db.add_model('Volkswagen Tiguan', '/static/img/Taos.png', '3 000 000 P', '190 км\ч', '150 л.с', '10 c', '9.1 л')
+
+@app.route('/model')
+def show_models():
+    db = get_db()
+    db = FDataBase(db)
+    model=db.get_model2()
+    return render_template('models.html', title='1234', menu=menu, model=model)
+
+@app.route('/model_info/<id>')
+def model_info(id):
+    db = get_db()
+    db = FDataBase(db)
+    model=db.getModelById(id)
+    print(model)
+    return render_template('model_info.html', title='Профиль', menu=menu, model=model)

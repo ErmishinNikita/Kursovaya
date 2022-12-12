@@ -66,7 +66,7 @@ def dobuser():
     db = get_db()
     db = FDataBase(db)
     if request.method == "POST":
-        db.add_users(request.form['login'], request.form['password'])
+        db.add_admin(request.form['login'], request.form['password'])
         flash('Пользователь добавлен', category='success')
     return render_template('admin/dobavitpolz.html', title='Добавление Пользователей')
 

@@ -98,6 +98,14 @@ class FDataBase:
             return False
         return True
 
+    def add_model(self, name, foto, price, max_speed, loshad, razgon, rashod):
+        try:
+            self.__cursor.execute("insert into model2 values(NULL, ?, ?, ?, ?, ?, ?, ?)", (name, foto, price, max_speed, loshad, razgon, rashod))
+            self.__db.commit()
+        except sqlite3.Error as e:
+            print("Ошибка добавления меню в БД" + str(e))
+            return False
+        return True
     def getAdmin(self):
         sql = 'SELECT * FROM admin'
         try:
@@ -116,7 +124,24 @@ class FDataBase:
         except:
             print('Ошибка чтения бд')
         return ()
-
+    def get_model2(self):
+        sql = 'SELECT * FROM model2'
+        try:
+            self.__cursor.execute(sql)
+            res = self.__cursor.fetchall()
+            if res: return res;
+        except:
+            print('Ошибка чтения бд')
+        return ()
+    def get_model2top3(self):
+        sql = 'SELECT * FROM model2 ORDER BY id DESC LIMIT (3)'
+        try:
+            self.__cursor.execute(sql)
+            res = self.__cursor.fetchall()
+            if res: return res;
+        except:
+            print('Ошибка чтения бд')
+        return ()
     def del_menu(self, id=0):
         if id == 0:
             self.__cursor.execute("delete from mainmenu ")
@@ -152,6 +177,14 @@ class FDataBase:
         except:
             print('Ошибка чтения бд')
 
+    def getModelById(self, id):
+        sql = 'SELECT * FROM model2 WHERE id = ?'
+        try:
+            self.__cursor.execute(sql, (id,))
+            res = self.__cursor.fetchall()
+            if res: return res;
+        except:
+            print('Ошибка чтения бд')
     def getPosts(self):
         sql = 'SELECT * FROM post'
         try:
@@ -203,5 +236,6 @@ class FDataBase:
 if __name__ == "__main__":
     db = connect_db()
     db = FDataBase(db)
-    db.add_admin("admin", "admin")
+    create_db()
+    # db.add_admin("admin", "admin")
     print(db)
