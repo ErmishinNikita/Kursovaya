@@ -12,6 +12,7 @@ menu = [{'name': 'Главная', 'url': '/index'}, {'name': 'Модельны�
 
 app.register_blueprint(admin, url_prefix='/admin')
 
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -36,31 +37,6 @@ def kabinet():
     if 'userlogged' not in session:
         return redirect(url_for('login'))
     return render_template('profile.html', title='Личный кабинет', menu=menu)
-
-
-@app.route('/Volkswagen_Polo')
-def Volkswagen_Polo():
-    return render_template('Volkswagen_Polo.html', title='Polo', menu=menu)
-
-
-@app.route('/Volkswagen_Jetta')
-def Volkswagen_Jetta():
-    return render_template('Volkswagen_Jetta.html', title='Polo', menu=menu)
-
-
-@app.route('/Volkswagen_Taos')
-def Volkswagen_Taos():
-    return render_template('Volkswagen_Taos.html', title='Polo', menu=menu)
-
-
-@app.route('/Volkswagen_Tiguan')
-def Volkswagen_Tiguan():
-    return render_template('Volkswagen_Tiguan.html', title='Polo', menu=menu)
-
-
-@app.route('/Volkswagen_Teramont')
-def Volkswagen_Teramont():
-    return render_template('Volkswagen_Teramont.html', title='Polo', menu=menu)
 
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -118,18 +94,22 @@ def close_db(error):
     if hasattr(g, 'link_db'):
         g.link_db.close()
 
+
 @app.route('/quit')
 def quit():
     session.clear();
     return render_template('index.html', title='Главная', menu=menu)
 
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html', title='Все сломалось', menu=menu)
 
+
 @app.errorhandler(401)
 def page_error_401(error):
     return render_template('401.html', title='Ошибка авторизации', menu=menu)
+
 
 @app.route('/a')
 def a():
@@ -137,17 +117,19 @@ def a():
     db = FDataBase(db)
     db.add_model('Volkswagen Tiguan', '/static/img/Taos.png', '3 000 000 P', '190 км\ч', '150 л.с', '10 c', '9.1 л')
 
+
 @app.route('/model')
 def show_models():
     db = get_db()
     db = FDataBase(db)
-    model=db.get_model2()
+    model = db.get_model2()
     return render_template('models.html', title='1234', menu=menu, model=model)
+
 
 @app.route('/model_info/<id>')
 def model_info(id):
     db = get_db()
     db = FDataBase(db)
-    model=db.getModelById(id)
+    model = db.getModelById(id)
     print(model)
     return render_template('model_info.html', title='Профиль', menu=menu, model=model)
