@@ -1,4 +1,8 @@
+import datetime
+
 from flask import Blueprint, render_template, request, url_for, redirect, session, g, flash
+
+from app import app
 
 admin = Blueprint('admin', __name__, template_folder='templates', static_folder='static')
 
@@ -32,13 +36,13 @@ def adminprof(username):
 def login():
     db = get_db()
     db = FDataBase(db)
-    if 'userlogged' in session:
-        return redirect(url_for('.adminprof', username=session['userlogged']))
+    if 'admin_logged' in session:
+        return redirect(url_for('.adminprof', username=session['admin_logged']))
     elif request.method == 'POST':
         for item in db.getAdmin():
             if item['login'] == request.form['login'] and item['password'] == request.form['password']:
-                session['userlogged'] = request.form['login']
-                username = session['userlogged']
+                session['admin_logged'] = request.form['login']
+                username = session['admin_logged']
                 print(username)
                 return redirect(url_for('.adminprof', username=username))
         else:

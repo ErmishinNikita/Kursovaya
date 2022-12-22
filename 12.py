@@ -6,7 +6,6 @@ class B:
             B.__s = super().__new__(cls)
         return B.__s
 
-
     def __del__(self):
         print('Удалил', self)
 

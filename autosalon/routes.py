@@ -22,11 +22,6 @@ def index():
     return render_template('index.html', title='Главная', menu=menu, model=model)
 
 
-# @app.route('/model')
-# def model():
-#     return render_template('model.html', title='Модельный ряд', menu=menu)
-
-
 @app.route('/contact')
 def contact():
     return render_template('contact.html', title='Контакты', menu=menu)
@@ -98,7 +93,10 @@ def close_db(error):
 @app.route('/quit')
 def quit():
     session.clear();
-    return render_template('index.html', title='Главная', menu=menu)
+    db = get_db()
+    db = FDataBase(db)
+    model = db.get_model2top3()
+    return render_template('index.html', title='Главная', menu=menu, model=model)
 
 
 @app.errorhandler(404)
@@ -115,7 +113,8 @@ def page_error_401(error):
 def a():
     db = get_db()
     db = FDataBase(db)
-    db.add_model('Volkswagen Tiguan', '/static/img/Taos.png', '3 000 000 P', '190 км\ч', '150 л.с', '10 c', '9.1 л')
+    db.add_model('Lada Granta Фургон', '/static/img/promtovar.png', '1 400 000 ₽', '130 км\ч', '90 л.с', '15.0 c',
+                 '9.5 л/км')
 
 
 @app.route('/model')

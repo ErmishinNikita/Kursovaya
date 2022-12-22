@@ -88,12 +88,12 @@ background: #AEFFC5;
 border: 5px solid #FF4343;
 background: #FF9C9C;
 }
+/*https://autosalon-vw.ru/resources/collections/11927c3031d5044dd4a67d4609bd0c6294bb463a.jpg*/
 
 .header-img{
     display: block;
-    background-image: url(https://autosalon-vw.ru/resources/collections/11927c3031d5044dd4a67d4609bd0c6294bb463a.jpg);
     width: 1206px;
-    height: 360px;
+    height: 440px;
     background-repeat: no-repeat;
     background-size: contain;
     margin: 0 auto;

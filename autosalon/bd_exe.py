@@ -53,33 +53,6 @@ class FDataBase:
             return False
         return True
 
-    def add_post(self, title, post_message):
-        try:
-            self.__cursor.execute("insert into post values(NULL, ?, ?)", (title, post_message))
-            self.__db.commit()
-        except sqlite3.Error as e:
-            print("Ошибка добавления меню в БД " + str(e))
-            return False
-        return True
-
-    def add_otziv(self, username, email, messeng):
-        try:
-            self.__cursor.execute("insert into otziv values(NULL, ?, ?, ?)", (username, email, messeng))
-            self.__db.commit()
-        except sqlite3.Error as e:
-            print("Ошибка добавления меню в БД " + str(e))
-            return False
-        return True
-
-    def add_uslug(self, fio, contact, uslugi):
-        try:
-            self.__cursor.execute("insert into vibrusl values(NULL, ?, ?, ?)", (fio, contact, uslugi))
-            self.__db.commit()
-        except sqlite3.Error as e:
-            print("Ошибка добавления меню в БД " + str(e))
-            return False
-        return True
-
     def add_auto(self, fio, contact, auto):
         try:
             self.__cursor.execute("insert into uslugi values(NULL, ?, ?, ?)", (fio, contact, auto))
@@ -100,12 +73,14 @@ class FDataBase:
 
     def add_model(self, name, foto, price, max_speed, loshad, razgon, rashod):
         try:
-            self.__cursor.execute("insert into model2 values(NULL, ?, ?, ?, ?, ?, ?, ?)", (name, foto, price, max_speed, loshad, razgon, rashod))
+            self.__cursor.execute("insert into model2 values(NULL, ?, ?, ?, ?, ?, ?, ?)",
+                                  (name, foto, price, max_speed, loshad, razgon, rashod))
             self.__db.commit()
         except sqlite3.Error as e:
             print("Ошибка добавления меню в БД" + str(e))
             return False
         return True
+
     def getAdmin(self):
         sql = 'SELECT * FROM admin'
         try:
@@ -124,6 +99,7 @@ class FDataBase:
         except:
             print('Ошибка чтения бд')
         return ()
+
     def get_model2(self):
         sql = 'SELECT * FROM model2'
         try:
@@ -133,8 +109,9 @@ class FDataBase:
         except:
             print('Ошибка чтения бд')
         return ()
+
     def get_model2top3(self):
-        sql = 'SELECT * FROM model2 ORDER BY id DESC LIMIT (3)'
+        sql = 'SELECT * FROM model2 ORDER BY id LIMIT (3)'
         try:
             self.__cursor.execute(sql)
             res = self.__cursor.fetchall()
@@ -142,6 +119,7 @@ class FDataBase:
         except:
             print('Ошибка чтения бд')
         return ()
+
     def del_menu(self, id=0):
         if id == 0:
             self.__cursor.execute("delete from mainmenu ")
@@ -185,25 +163,6 @@ class FDataBase:
             if res: return res;
         except:
             print('Ошибка чтения бд')
-    def getPosts(self):
-        sql = 'SELECT * FROM post'
-        try:
-            self.__cursor.execute(sql)
-            res = self.__cursor.fetchall()
-            if res: return res;
-        except:
-            print('шибка чтения бд')
-        return ()
-
-    def getOtz(self):
-        sql = 'SELECT * FROM otziv'
-        try:
-            self.__cursor.execute(sql)
-            res = self.__cursor.fetchall()
-            if res: return res;
-        except:
-            print('шибка чтения бд')
-        return ()
 
     def getUsl(self):
         sql = 'SELECT * FROM uslugi'
@@ -215,16 +174,6 @@ class FDataBase:
             print('Ошибка чтения бд')
         return ()
 
-    def addPost(self, title, text):
-        try:
-            tm = math.floor(time.time())
-            self.__cursor.execute("insert into posts values(NULL, ?, ?, ?)", (title, text, tm))
-            self.__db.commit()
-        except sqlite3.Error as e:
-            print("Ошибка добавления статьи в БД" + str(e))
-            return False
-        return True
-
     def deuUserById(self, id):
         if id == 0:
             self.__cursor.execute("delete from users ")
@@ -233,9 +182,10 @@ class FDataBase:
             self.__cursor.execute(f"delete from users where id={id}")
             self.__db.commit()
 
+
 if __name__ == "__main__":
     db = connect_db()
     db = FDataBase(db)
-    create_db()
+    # create_db()
     # db.add_admin("admin", "admin")
     print(db)
