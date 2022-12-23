@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+{{super()}}
+<div class="wrapper-model">
+{% for m in model %}
+    <div class="polo-pokupka">
+    <div class="Polo-img">
+        <h1>{{m.name}}</h1>
+        <img src="{{m.foto}}" width="478px" height="300px">
+    </div>
+    <div class="colors">
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="silver"></div>
+        <div class="red"></div>
+        <div class="blue"></div>
+    </div>
+    </div>
+    <div class="pokupka">
+        <h2>Стоимость покупки:</h2>
+        <h1>{{m.price}}</h1>
+        <div class="knopka-pokupki">
+        <a type="submit" href="{{url_for('login')}}">Заявка на покупку</a>
+    </div>
+    </div>
+
+</div>
+<div class="polo">
+    <div class="power">
+        <img src="https://vw-auto-msk.ru/assets/img/body-tech_icons/tech-icon_01.png">
+        <div class="item-car">
+            <p class="loshad">{{m.max_speed}}</p>
+            <p class="mosh">Максимальная скорость</p>
+        </div>
+    </div>
+    <div class="power">
+        <img src="https://vw-auto-msk.ru/assets/img/body-tech_icons/tech-icon_03.png">
+        <div class="item-car"><p class="loshad">{{m.loshad}}</p>
+        <p class="mosh">Мощность двигателя</p>
+        </div>
+    </div>
+    <div class="power">
+        <img src="https://vw-auto-msk.ru/assets/img/body-tech_icons/tech-icon_02.png">
+        <div class="item-car">
+            <p class="loshad">{{m.razgon}}</p>
+            <p class="mosh">Разгон до 100 км/ч</p>
+        </div>
+    </div>
+    <div class="power">
+        <img src="https://vw-auto-msk.ru/assets/img/body-tech_icons/tech-icon_04.png">
+        <div class="item-car">
+            <p class="loshad">{{m.rashod}}</p>
+            <p class="mosh">Средний расход топлива</p>
+        </div>
+    </div>
+</div>
+
+
+{% endfor %}
+{% endblock %}

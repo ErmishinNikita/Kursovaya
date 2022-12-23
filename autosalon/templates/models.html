@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{{super()}}
+
+<div class="wrapper">
+
+    <div class="model">
+        {% for m in model %}
+        <div class="model-item">
+            <a href="/model_info/{{m.id}}"> <img
+                    src="{{m.foto}}"
+                    width="370px" height="250px"></a>
+            <h2>{{m.name}}</h2>
+            <p>Price</p>
+            <h2>{{m.price}}</h2>
+        </div>
+        {% endfor %}
+</div>
+</div>
+
+{% endblock %}
